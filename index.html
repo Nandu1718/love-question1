@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Have a Question</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-serif: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #ffe6e6;
+            text-align: center;
+        }
+        h1 {
+            color: #ff4d6d;
+            font-size: 3rem;
+        }
+        .buttons {
+            margin-top: 20px;
+            position: relative;
+            height: 100px;
+            width: 100%;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        #yesBtn {
+            background-color: #ff4d6d;
+            color: white;
+            margin-right: 20px;
+        }
+        #noBtn {
+            background-color: #777;
+            color: white;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>I love you. Do you love me too?</h1>
+    
+    <div class="buttons">
+        <button id="yesBtn" onclick="alert('I love you too! ❤️')">I love you too</button>
+        <button id="noBtn">No</button>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+
+        // Set initial position for No button
+        noBtn.style.left = '55%';
+
+        function moveButton() {
+            // Calculate random positions within the visible screen area
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        }
+
+        // Moves when mouse hovers over it (for computers)
+        noBtn.addEventListener('mouseover', moveButton);
+
+        // Moves when someone tries to tap it (for phones)
+        noBtn.addEventListener('touchstart', moveButton);
+    </script>
+
+</body>
+</html>
